@@ -1,49 +1,47 @@
-;;Adressenliste;;Stand:;25.05.2025;;;;;;;;;
-;;;;;;;;;;;;;;
-Verein;Stimme;Vorname;Nachnahme;Geburtsdatum;wohnhaft in;Ort;Bundesland;Telefon;Mobiltelefon;E-Mail;Tel. dienstl.;Fax;Status;Befreit
-1;Sopran;Jasira;Boxberger;12.06.2004;Dölitzer Str. 2;04277 Leipzig;Sachsen;;0174 8012219;jasira.boxberger@outlook.de;;;Probejahr;
-2;Sopran;Dorothea;Miseler;22.05.1973;Breslauer Straße 43c;04299 Leipzig;Sachsen;034 297 / 908 699;0152 / 230 878 06;dorothea.miseler@gmx.de;;;Stimmführerin;
-3;Sopran;Anna;Gebauer;09.12.1975;Langenbergstraße 24;34270 Schauenburg;Hessen;05601/9391751;0163/1649293;anna.bammes@gmx.de;;;Vorstand ;
+Verein;Stimme;Vorname;Nachname;Geburtsdatum;wohnhaft in;Ort;Bundesland;Telefon;Mobiltelefon;E-Mail;Tel. dienstl.;Fax;Status;Befreit
+1;Sopran;Jasira;Boxberger;12.06.2004;Dï¿½litzer Str. 2;04277 Leipzig;Sachsen;;0174 8012219;jasira.boxberger@outlook.de;;;Probejahr;
+2;Sopran;Dorothea;Miseler;22.05.1973;Breslauer Straï¿½e 43c;04299 Leipzig;Sachsen;034 297 / 908 699;0152 / 230 878 06;dorothea.miseler@gmx.de;;;Stimmfï¿½hrerin;
+3;Sopran;Anna;Gebauer;09.12.1975;Langenbergstraï¿½e 24;34270 Schauenburg;Hessen;05601/9391751;0163/1649293;anna.bammes@gmx.de;;;Vorstand ;
 4;Sopran;Ansgard;Laskowski;01.03.1977;Gottschedstr. 22;04109 Leipzig;Sachsen;;0176 / 32675336;ansgard@posteo.de;;;;
 5;Sopran;Cornelia;Unger;01.05.1979;Stoltenkampstrasse 3;48455 Bad Bentheim;Niedersachsen;05922-8070860;0176 / 24762020;coreunger@gmail.com;;;;
 6;Sopran;Imke;Wilms;07.01.1981;Apostel-Paulus-Str. 41;10823 Berlin;Berlin;;0176 / 800 47 769;imke.krx.wilms@googlemail.com;;;;
-7;Sopran;Claudia;Wricke;04.09.1981;Lychener Str. 33;10437 Berlin;Berlin;;0176 / 216 222 99;cwricke@gmail.com;;;stellv. Stimmführerin;
-8;Sopran;Ulrike;Hausen;18.03.1985;Hans-Böckler-Straße 18;53225 Bonn;Nordrhein-Westfalen;0228 / 38777421;0178 / 294 21 45;ulrike.hausen@gmx.de;;;Vorstandsvorsitzende;
-9;Sopran;Elisabeth;Michaelis;18.03.1997;Augsburger Staße 45;01309 Dresden;Sachsen;;0174/1006585;elisabeth.michaelis@gmx.de;;;Vorstand;
-10;Sopran;Stephanie;Drechsler;;Hainstraße 1a;08451 Crimmitschau;Sachsen;;15777347773;steppsdrechsler@googlemail.com;;;;
+7;Sopran;Claudia;Wricke;04.09.1981;Lychener Str. 33;10437 Berlin;Berlin;;0176 / 216 222 99;cwricke@gmail.com;;;stellv. Stimmfï¿½hrerin;
+8;Sopran;Ulrike;Hausen;18.03.1985;Hans-Bï¿½ckler-Straï¿½e 18;53225 Bonn;Nordrhein-Westfalen;0228 / 38777421;0178 / 294 21 45;ulrike.hausen@gmx.de;;;Vorstandsvorsitzende;
+9;Sopran;Elisabeth;Michaelis;18.03.1997;Augsburger Staï¿½e 45;01309 Dresden;Sachsen;;0174/1006585;elisabeth.michaelis@gmx.de;;;Vorstand;
+10;Sopran;Stephanie;Drechsler;;Hainstraï¿½e 1a;08451 Crimmitschau;Sachsen;;15777347773;steppsdrechsler@googlemail.com;;;;
 11;Sopran;Mercedes;;;;;;;;;;;Probejahr ;
 ;;;;;;;;;;;;;;
-12;Alt;Sabine;Bruder;28.01.1959;Chemnitzer Str. 6 d;09217 Burgstädt;Sachsen;03724 / 854 445;0162 / 258 12 72;thosabruder@aol.com;;037 24 / 857 263;Stimmführerin;
+12;Alt;Sabine;Bruder;28.01.1959;Chemnitzer Str. 6 d;09217 Burgstï¿½dt;Sachsen;03724 / 854 445;0162 / 258 12 72;thosabruder@aol.com;;037 24 / 857 263;Stimmfï¿½hrerin;
 13;Alt;Dorothee;Paul;11.01.1988;Johann Meyer Str. 2c;01097 Dresden;Sachsen;;0176 / 801 845 95;dorothee.paul@posteo.de;;;;
-14;Alt;Iris;Bürger;02.07.1968;Effengrube 16;23552 Lübeck;Scheswig-Holstein;0451 / 121 48 26;01590 / 2364818;irisbuerger@web.de;;;Stimmführer-Stellvertreterin;
-15;Alt;Franziska;Herrmann;31.07.1973;Prießnitzstraße 34a;01099 Dresden;Sachsen;0351 / 811 36 03;0176 / 966 114 99;frenze.herrmann@yahoo.de;;;;
-16;Alt;Maria;Lobeck;08.11.1975;Montessoristraße 13;04416 Markkleeberg;Sachsen;0341 / 253 59 24;0178 / 898 91 10;marialobeck@web.de;;;Vorstand;
+14;Alt;Iris;Bï¿½rger;02.07.1968;Effengrube 16;23552 Lï¿½beck;Scheswig-Holstein;0451 / 121 48 26;01590 / 2364818;irisbuerger@web.de;;;Stimmfï¿½hrer-Stellvertreterin;
+15;Alt;Franziska;Herrmann;31.07.1973;Prieï¿½nitzstraï¿½e 34a;01099 Dresden;Sachsen;0351 / 811 36 03;0176 / 966 114 99;frenze.herrmann@yahoo.de;;;;
+16;Alt;Maria;Lobeck;08.11.1975;Montessoristraï¿½e 13;04416 Markkleeberg;Sachsen;0341 / 253 59 24;0178 / 898 91 10;marialobeck@web.de;;;Vorstand;
 17;Alt;Martin;Paul;25.06.1979;Dorotheenplatz 2;04109 Leipzig;Sachsen;;0177 / 434 28 00;martinpaul@posteo.de;;;Verkehrsbeauftragter & Tontechniker & Instagram;
 18;Alt;Johanna;Wiegand;30.08.1980;Albert-Einstein-Str. 25;14473 Potsdam;Brandenburg;;0162 / 275 44 10;johanna.wiegand@gmail.com;;;Adressliste, Teilnahmeliste;
-19;Alt;Friederike;Zeiner;10.07.1977;Seeburgstraße 57;04103 Leipzig;Sachsen;;0176/21 44 41 62;zeineralt@web.de;;;;
+19;Alt;Friederike;Zeiner;10.07.1977;Seeburgstraï¿½e 57;04103 Leipzig;Sachsen;;0176/21 44 41 62;zeineralt@web.de;;;;
 20;Alt;Franziska;Prokein;;Feuerbachstrasse 9;06114 Halle;Sachsen-Anhalt;0178 196777;;f.prokein@arcor.de;;;Probejahr ;
-21;Alt;Marion;Röber;;Dr. Nolensstraat 19;7522AX Enschede/NL;Niederlande;;;m.rber@icloud.com;;;;
+21;Alt;Marion;Rï¿½ber;;Dr. Nolensstraat 19;7522AX Enschede/NL;Niederlande;;;m.rber@icloud.com;;;;
 ;;;;;;;;;;;;;;
 22;Tenor;Dirk;Eisold;28.01.1974;Falkensteinplatz 1;01309 Dresden;Sachsen;;0160 / 7563590;dirk.eisold@gmx.de;;;;
-23;Tenor;Christoph;Hartmann;28.05.1987;Schachtstrasse 15;01705 Freital;Sachsen;;0176 / 966 553 52;chr.hartmann87@gmx.de;;;Stimmführer-Stellvertreter ;ja
+23;Tenor;Christoph;Hartmann;28.05.1987;Schachtstrasse 15;01705 Freital;Sachsen;;0176 / 966 553 52;chr.hartmann87@gmx.de;;;Stimmfï¿½hrer-Stellvertreter ;ja
 24;Tenor;Georg;Paul;28.09.1986;Gohliser Str. 23;04155 Leipzig;Sachsen;;0176 / 444 506 94;groegluap@googlemail.com;;;Dienstplaner;
-25;Tenor;Christoph-Friedrich;Sonntag;26.04.1965;Am Tannenhof 68;19061 Schwerin;Mecklenburg-Vorpommern;0385 / 555 78 68;0160 / 941 555 21;cfsonntag@gmail.com;0385 / 520 42 53;;Stimmführer;
+25;Tenor;Christoph-Friedrich;Sonntag;26.04.1965;Am Tannenhof 68;19061 Schwerin;Mecklenburg-Vorpommern;0385 / 555 78 68;0160 / 941 555 21;cfsonntag@gmail.com;0385 / 520 42 53;;Stimmfï¿½hrer;
 26;Tenor;Ben;Uhle;28.10.1973;Altenberger Str. 23;01277 Dresden;Sachsen;0351 / 31580321;0177 / 759 65 69;ben.uhle@gmx.de;0351 / 810 62 98;0351 / 810 61 82;Vorstand;
-27;Tenor;Torsten;Schiefer;19.04.1985;Heinrich-Schütz-Str. 5;01277 Dresden;Sachsen;;0176 / 231 070 44;torsten-schiefer@web.de;;;Vorstand;
+27;Tenor;Torsten;Schiefer;19.04.1985;Heinrich-Schï¿½tz-Str. 5;01277 Dresden;Sachsen;;0176 / 231 070 44;torsten-schiefer@web.de;;;Vorstand;
 28;Tenor;Simon;Andrich;18.07.1979;Kamenzer Str. 30;01099 Dresden;Sachsen ;;0177 / 2962223;simand@posteo.de;;;;
 29;Tenor;Markus;Begrich;29.08.1971;Wisselsheimer Str. 21;61231 Bad Nauheim;Hessen;;0175 /  6719790;markusbegrich@gmx.de;;;Probejahr ;
 ;;;;;;;;;;;;;;
-30;Bass;Arndt;Begrich;04.06.1976;Blücherstr. 37A;10961 Berlin;Berlin;030 / 23329652;0162 / 2424262;arndtbegrich@gmail.com;;;;
-31;Bass;Tobias;Gebauer;17.12.1979;Langenbergstraße 24;34270 Schauenburg;Hessen;05601/9391751;0177 / 206 50 80;tobiasgebauer@freenet.de;;;;
-32;Bass;Raphael;Hering;08.07.1987;Böhmische Str. 38;01099 Dresden;Sachsen;;0178 / 235 93 87;vivasoft@web.de;;;Stimmführer-Stellvertreter ;
+30;Bass;Arndt;Begrich;04.06.1976;Blï¿½cherstr. 37A;10961 Berlin;Berlin;030 / 23329652;0162 / 2424262;arndtbegrich@gmail.com;;;;
+31;Bass;Tobias;Gebauer;17.12.1979;Langenbergstraï¿½e 24;34270 Schauenburg;Hessen;05601/9391751;0177 / 206 50 80;tobiasgebauer@freenet.de;;;;
+32;Bass;Raphael;Hering;08.07.1987;Bï¿½hmische Str. 38;01099 Dresden;Sachsen;;0178 / 235 93 87;vivasoft@web.de;;;Stimmfï¿½hrer-Stellvertreter ;
 33;Bass;Olaf;Konopik;12.08.1973;Heinrich-Zille-Str. 25 ;06114 Halle;Sachsen-Anhalt;;0176/30113003;olaf.konopik@gmx.de;;;;
 34;Bass;Raphael;Michaelis;27.11.1977;Eythraer Str. 26;04229 Leipzig;Sachsen;;0173 / 561 42 31;raphael.michaelis@freenet.de;;;;ja
-35;Bass;Andreas;Müller;26.09.1955;Hoyerstr. 13;04229 Leipzig;Sachsen;0341 / 479 05 14;01575/9084292;relleum.saerdna@web.de;;;;
-36;Bass;Joseph;Sonntag;26.11.1999;Teubnerstr. 6;04317 Leipzig;Sachsen ;;0159 06814020;jokacello@gmail.com;;;Stimmführer;
-37;Bass;Tim;Stöpel;28.03.2005;Nonnenstr 50;04229 Leipzig;Sachsen;;0177 3249272;stoepeltim05@gmail.com;;;;
+35;Bass;Andreas;Mï¿½ller;26.09.1955;Hoyerstr. 13;04229 Leipzig;Sachsen;0341 / 479 05 14;01575/9084292;relleum.saerdna@web.de;;;;
+36;Bass;Joseph;Sonntag;26.11.1999;Teubnerstr. 6;04317 Leipzig;Sachsen ;;0159 06814020;jokacello@gmail.com;;;Stimmfï¿½hrer;
+37;Bass;Tim;Stï¿½pel;28.03.2005;Nonnenstr 50;04229 Leipzig;Sachsen;;0177 3249272;stoepeltim05@gmail.com;;;;
 ;Bass;Albrecht;Wiegand;13.02.2005;Rigaer Str. 79;10247 Berlin;Berlin;;;albrecht.wiegand@gmail.com;;;;
 ;;;;;;;;;;;;;;
-;Dirigent;Jörg;Genslein;03.11.1978;Heinrich-Roller-Str. 13;10405 Berlin;Berlin;030/49966071;0177 / 878 90 96;jorge221@me.com;;;;ja
-;Tenor;Markus;Klose;;Martin-Luther-Straße 10;01099 Dresden;;0351 / 65306287;0151 / 24226283;marklose@gmx.de;;;Aushilfe;ja
+;Dirigent;Jï¿½rg;Genslein;03.11.1978;Heinrich-Roller-Str. 13;10405 Berlin;Berlin;030/49966071;0177 / 878 90 96;jorge221@me.com;;;;ja
+;Tenor;Markus;Klose;;Martin-Luther-Straï¿½e 10;01099 Dresden;;0351 / 65306287;0151 / 24226283;marklose@gmx.de;;;Aushilfe;ja
 ;Alt;Siegrid;Folprecht;19.09.1978;Altenberger Str. 23;01277 Dresden;;;0160 / 91710531;siegrid199@outlook.de;;;Aushilfe;ja
-;Köchin;Verena;Räth;;;Bamberg;;;;ve.raeth@gmail.com;;;;ja
+;Kï¿½chin;Verena;Rï¿½th;;;Bamberg;;;;ve.raeth@gmail.com;;;;ja
