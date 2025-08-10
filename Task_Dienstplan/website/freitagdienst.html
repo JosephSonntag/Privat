@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dienstplan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Task Dienstplan</h1>
+    </header>
+    <main>
+        <section id="Abenddienst">
+            <h2>Anwesende Personen (2)</h2>
+            <p>Bitte auswählen, welche Personen den Abenddienst gemacht haben:</p>
+            <form method="post" action="/submitabenddienst">
+                {% for person in anwesende %}
+                    <label>
+                        <input type="checkbox" name="person_ids_2" value="{{ loop.index0 }}">
+                        {{ person.Vorname }}
+                    </label><br>
+                {% endfor %}
+                <button type="submit">Abschicken</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Task Dienstplan</p>
+    </footer>
+</html>

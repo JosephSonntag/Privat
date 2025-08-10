@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dienstplan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Task Dienstplan</h1>
+    </header>
+    <main>
+        <section id="anwesende_personen">
+            <h2>Anwesende Personen</h2>
+            <p>Bitte auswählen, welche Personen fehlen:</p>
+            <form method="post" action="/submitfehlend">
+                {% for person in data_list %}
+                    <label>
+                        <input type="checkbox" name="person_ids" value="{{ loop.index0 }}">
+                        {{ person.Vorname }}
+                    </label><br>
+                {% endfor %}
+                <button type="submit">Abschicken</button>
+            </form>
+        </section>
+        <!-- <script>
+            // Simple CSS injection for side-by-side layout
+            document.head.insertAdjacentHTML('beforeend', `
+                <style>
+                    main {
+                        display: flex;
+                        gap: 2rem;
+                        align-items: flex-start;
+                    }
+                    section {
+                        flex: 1 1 0;
+                    }
+                </style>
+            `);
+        </script> -->
+    </main>
+    <footer>
+        <p>&copy; 2023 Task Dienstplan</p>
+    </footer>
+</html>

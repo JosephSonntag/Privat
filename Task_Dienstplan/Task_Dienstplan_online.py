@@ -2,6 +2,8 @@ import os
 import csv
 import pandas as pd
 import random
+import io
+import sharepy
 
 # Prozedur dienste +1
 def add_service_count(data_list, name):
@@ -164,10 +166,19 @@ def Sommerreise(verfuegbar, zuordnung):
         print(f"{dienst}: ", end="")
         print(", ".join(f"{p.get('Vorname', '')} {p.get('Nachname', '')}" for p in personen))
 
+URL = 'https://taskev.sharepoint.com/'
+FILE_URL = 'https://taskev.sharepoint.com/sites/main/Adresslisten/Forms/Task-Adressliste.xlsx'
+SHAREPOINT_USER = 'jokacello@gmail.com'
+SHAREPOINT_PASSWORD = 'ms5426_EIM8380!'
+
+s = sharepy.connect(URL, username=SHAREPOINT_USER, password=SHAREPOINT_PASSWORD)
+r = s.get(URL+FILE_URL)
+f = io.BytesIO(r.content)
+df = pd.read_csv(f)
 
 # Einlesen der Adressliste
-base_path = os.path.dirname(os.path.abspath(__file__))
-os.chdir(base_path)
+#base_path = os.path.dirname(os.path.abspath(__file__))
+#os.chdir(base_path)
 filename = "Task_Adressliste.csv"
 fields = []
 rows = []
@@ -225,4 +236,3 @@ if input_choice == "W":
     Wochenende(verfuegbar, zuordnung)
 elif input_choice == "S":
     Sommerreise(verfuegbar, zuordnung)
-
