@@ -11,18 +11,16 @@
         <h1>Task Dienstplan</h1>
     </header>
     <main>
-        <section id="Abenddienst">
-            <h2>Abenddienst Auswählen</h2>
-            <p>Bitte auswählen, welche Personen den Abenddienst gemacht haben:</p>
-            <form method="post" action="/submitabenddienst">
-                {% for person in anwesende %}
+        <section id="Dienste">
+            <h2>Entfallende Dienste</h2>
+            <p>Bitte auswählen, welche Dienste entfallen (angekreuzte Dienste entfallen):</p>
+            <form method="post" action="/submitdienste_WE">
+                {% for dienst in freitag_abenddienst_list %}
                     <label>
-                        <input type="checkbox" name="person_ids_2" value="{{ loop.index0 }}">
-                        {{ person.Vorname }}
+                        <input type="checkbox" name="dienst_ids" value="{{ loop.index0 }}">
+                        {{ dienst }}
                     </label><br>
                 {% endfor %}
-                <button type="submit">Abschicken</button>
-            </form>
         </section>
     </main>
     <footer>

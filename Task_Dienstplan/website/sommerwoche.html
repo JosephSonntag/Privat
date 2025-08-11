@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dienstplan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Task Dienstplan</h1>
+    </header>
+    <main>
+        <section id="SommerWochenende">
+            <h2>Sommerreise oder Wochenende</h2>
+            <p>Bitte auswählen, ob es sich um ein Wochenende oder die Sommerreise handelt:</p>
+            <form method="post" action="/submitwochensommer">
+                <label>
+                    <select name="wochensommer_choice">
+                        <option value="Sommerreise">Sommerreise</option>
+                        <option value="Wochenende">Wochenende</option>
+                    </select>
+                </label><br>
+                <button type="submit">Abschicken</button>
+            </form>
+        </section>
+</main>
+    <footer>
+        <p>&copy; 2025 Task Dienstplan</p>
+    </footer>
+</html>

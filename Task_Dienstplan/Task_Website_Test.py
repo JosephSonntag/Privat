@@ -2,7 +2,7 @@ import os
 import csv
 import pandas as pd
 import random
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, jsonify
 
 ## Prozeduren ##
 
@@ -59,12 +59,90 @@ def Wochenende(verfuegbar, zuordnung):
     "Sonntag Frühstück": 4,
     "Sonntag Mittagessen": 4
     }
+    session['dienste_WE'] = dienste_WE
 
     aktive_Dienste = {dienst: anzahl for dienst, anzahl in dienste_WE.items()}
 
     freitag_abenddienst(aktive_Dienste, verfuegbar, zuordnung)
 
     pyjamaboys_dienst(dienste_WE, pyjamaboys)
+
+
+
+    for dienst, anzahl in aktive_Dienste.items():
+        ausgewaehlt = []
+        for _ in range(anzahl):
+            # Finde Personen mit minimaler Dienstanzahl
+            min_Dienste = get_min_Dienste(verfuegbar)
+            kandidaten = [p for p in verfuegbar if p["Dienste"] == min_Dienste]
+            if kandidaten:
+                person = random.choice(kandidaten)
+                ausgewaehlt.append(person)
+                person["Dienste"] += 1
+            else:
+                # Falls keine Kandidaten mehr verfügbar sind, wähle zufällig aus allen anwesenden
+                person = random.choice(anwesende)
+                ausgewaehlt.append(person)
+                person["Dienste"] += 1
+        zuordnung[dienst] = ausgewaehlt
+
+# Prozedur Sommerreise
+def Sommerreise(verfuegbar, zuordnung):
+
+    anwesende = session.get('anwesende', [])
+    dienste_SE = {
+    "Freitag Abendessen": 4,
+    "Samstag Wecken": 1,
+    "Samstag Frühstück": 4,
+    "Samstag Mittagessen": 4,
+    "Samstag Kaffee": 1,
+    "Samstag Abendessen": 4,
+    "Sonntag Wecken": 1,  # Annahme: 1 Person, ggf. anpassen
+    "Sonntag Frühstück": 4,
+    "Sonntag Mittagessen": 4,
+    "Montag Wecken": 1,
+    "Montag Frühstück": 4,
+    "Montag Mittagessen": 4,
+    "Montag Kaffee": 1,
+    "Montag Abendessen": 4,
+    "Dienstag Wecken": 1,
+    "Dienstag Frühstück": 4,
+    "Dienstag Mittagessen": 4,
+    "Dienstag Kaffee": 1,
+    "Dienstag Abendessen": 4,
+    "Mittwoch Wecken": 1,
+    "Mittwoch Frühstück": 4,
+    "Mittwoch Mittagessen": 4,
+    "Mittwoch Kaffee": 1,
+    "Mittwoch Abendessen": 4,
+    "Donnerstag Wecken": 1,
+    "Donnerstag Frühstück": 4,
+    "Donnerstag Mittagessen": 4,
+    "Donnerstag Kaffee": 1,
+    "Donnerstag Abendessen": 4,
+    "Freitag2 Wecken": 1,
+    "Freitag2 Frühstück": 4,
+    "Freitag2 Mittagessen": 4,
+    "Freitag2 Kaffee": 1,
+    "Freitag2 Abendessen": 4,
+    "Samstag2 Wecken": 1,
+    "Samstag2 Frühstück": 4,
+    "Samstag2 Mittagessen": 4,
+    "Samstag2 Kaffee": 1,
+    "Samstag2 Abendessen": 4,
+    "Sonntag Wecken (Pyjama-Boys)": 5,
+    "Sonntag2 Frühstück": 4,
+    }
+    session['dienste_SE'] = dienste_SE
+
+
+    pyjamaboys_dienst(dienste_SE, pyjamaboys)
+
+    freitag_abenddienst(aktive_Dienste, verfuegbar, zuordnung)
+    
+    # Dienste werden gleichmäßig und zufällig auf alle verfügbaren Personen verteilt,
+    # ohne Begrenzung der maximalen Dienste pro Person.
+    aktive_Dienste = {dienst: anzahl for dienst, anzahl in dienste_SE.items()}
 
     for dienst, anzahl in aktive_Dienste.items():
         ausgewaehlt = []
@@ -145,19 +223,32 @@ def submitfehlend():
 
 @app.route('/submitabenddienst', methods=['POST'])
 def submitabenddienst():
-
     anwesende = session.get('anwesende', [])
 
-    # IDs der fehlenden Peronen (Checkboxen)
-    abenddienst_ids = request.form.getlist('person_ids')
-    abenddienst_ids = list(map(int, abenddienst_ids))       # to int
+    # IDs der fehlenden Personen (Checkboxen)
+    abenddienst_ids = request.form.getlist('person_ids_2')
+    abenddienst_ids = list(map(int, abenddienst_ids))  # to int
 
-    # anwesende = alle, deren Index nicht missing_ids ist
-    freitag_abenddienst_list = [person for idx, person in enumerate(data_list) if idx not in abenddienst_ids]
+    # anwesende = alle, deren Index nicht abenddienst_ids ist
+    freitag_abenddienst_list = [person for idx, person in enumerate(anwesende) if idx not in abenddienst_ids]
 
     session['freitag_abenddienst_list'] = freitag_abenddienst_list  # Store in session for later use
 
-    return render_template("result.html", anwesende=anwesende)
+    # Return JSON for AJAX to trigger popup, but don't redirect
+    return render_template("sommerwoche.html")
+
+@app.route('/submitwochensommer', methods=['POST'])
+def submitwochensommer():
+    wochensommer_choice = request.form['wochensommer_choice']
+
+    if wochensommer_choice == "Wochenende":
+        return render_template("wochenende.html", dienste_WE=session.get('dienste_WE', {}))
+    elif wochensommer_choice == "Sommerreise": 
+        return render_template("sommerreise.html", dienste_SE=session.get('dienste_SE', {}))
+
+@app.route('/submitdienste_WE', methods=['POST'])
+def submitdienste_WE():
+   
 
 if __name__ == "__main__":
     app.run(debug=True)
