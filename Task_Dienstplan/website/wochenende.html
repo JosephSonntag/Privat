@@ -8,20 +8,21 @@
 </head>
 <body>
     <header>
-        <h1>Task Dienstplan</h1>
+        <h1>Task Dienstplan - Wochenende</h1>
     </header>
     <main>
         <section id="Dienste">
             <h2>Entfallende Dienste</h2>
             <p>Bitte auswählen, welche Dienste entfallen (angekreuzte Dienste entfallen):</p>
             <form method="post" action="/submitdienste_WE">
-                {% for dienst in freitag_abenddienst_list %}
+                {% for dienst in dienste_WE %}
                     <label>
-                        <input type="checkbox" name="dienst_ids" value="{{ loop.index0 }}">
+                        <input type="checkbox" name="dienst_WE_names" value="{{ dienst }}">
                         {{ dienst }}
                     </label><br>
                 {% endfor %}
-        </section>
+                <button type="submit">Abschicken</button>
+            </form>
     </main>
     <footer>
         <p>&copy; 2025 Task Dienstplan</p>

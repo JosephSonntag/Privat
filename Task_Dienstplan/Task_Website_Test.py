@@ -1,14 +1,13 @@
 import os
 import csv
-import pandas as pd
 import random
 from flask import Flask, render_template, request, session, jsonify
 
 ## Prozeduren ##
 
 # Prozedur dienste +1
-def add_service_count(data_list, name):
-    for row in data_list:
+def add_service_count(anwesende, name):
+    for row in anwesende:
         if row.get("Vorname", "").lower() == name.lower():
             row["Dienste"] += 1
 
@@ -17,87 +16,96 @@ def get_min_Dienste(verfuegbar):
         return 0
     return min([person["Dienste"] for person in verfuegbar])
 
-def pyjamaboys_dienst(aktive_dienste, pyjamaboys):
+def pyjamaboys_dienst_WE(aktive_dienste, pyjamaboys, anwesende):
     # Dienstzuweisung für Pyjama-Boys und Freitag Abendessen
-    for dienst in ["Sonntag Wecken (Pyjama-Boys)"]:
+    for dienst in ["Sonntag Wecken(Pyjama-Boys)"]:
         zuordnung[dienst] = pyjamaboys
         # Count dienste +1 for each pyjama boy in data_list
         for boy in pyjamaboys:
-            add_service_count(data_list, boy.get("Vorname", "").lower())
-        if "Sonntag Wecken (Pyjama-Boys)" in aktive_dienste:
-            del aktive_dienste["Sonntag Wecken (Pyjama-Boys)"]
+            add_service_count(anwesende, boy.get("Vorname", "").lower())
+        if "Sonntag Wecken(Pyjama-Boys)" in aktive_dienste:
+            del aktive_dienste["Sonntag Wecken(Pyjama-Boys)"]
 
-def freitag_abenddienst(aktive_dienste, anwesende, zuordnung):
-    freitag_abendessen_list = session.get('freitag_abendessen_list', [])
+def pyjamaboys_dienst_SE(aktive_dienste, pyjamaboys, anwesende):
+    # Dienstzuweisung für Pyjama-Boys und Freitag Abendessen
+    for dienst in ["Sonntag2 Wecken(Pyjama-Boys)"]:
+        zuordnung[dienst] = pyjamaboys
+        # Count dienste +1 for each pyjama boy in data_list
+        for boy in pyjamaboys:
+            add_service_count(anwesende, boy.get("Vorname", "").lower())
+        if "Sonntag2 Wecken(Pyjama-Boys)" in aktive_dienste:
+            del aktive_dienste["Sonntag2 Wecken(Pyjama-Boys)"]
+
+def freitag_abenddienst(dienste_updated, anwesende, zuordnung, freitag_abenddienst_list):
     freitag_abendessen_done = []
 
-    for name in freitag_abendessen_list:
+    for name in freitag_abenddienst_list:
         match = next((person for person in anwesende if person.get("Vorname", "").lower() == name.lower()), None)
         if match:
             freitag_abendessen_done.append(match)
             # Zähle "dienste" für die Person in data_list hoch
-            add_service_count(data_list, match.get("Vorname", "").lower())
+            add_service_count(anwesende, match.get("Vorname", "").lower())
 
 
     for dienst in ["Freitag Abendessen"]:
         zuordnung[dienst] = freitag_abendessen_done
-        if "Freitag Abendessen" in aktive_dienste:
-            del aktive_dienste["Freitag Abendessen"]
+        if "Freitag Abendessen" in dienste_updated:
+            del dienste_updated["Freitag Abendessen"]
 
-# Prozedur Wochenende
-def Wochenende(verfuegbar, zuordnung):
+# Einlesen der Adressliste
+base_path = os.path.dirname(os.path.abspath(__file__))
+os.chdir(base_path)
+filename = "Task_Adressliste.csv"
+fields = []
+rows = []
+data_list = []
+columns_to_read = ['Vorname', 'Nachname', 'Befreit']
+# Hier könnte die zufällige Zuteilung der dienste erfolgen
+zuordnung = {}
 
-    anwesende = session.get('anwesende', [])
-    dienste_WE = {
+with open(filename, 'r', encoding='utf-8') as csvfile:
+    #csvreader = pd.read_csv(csvfile, delimiter=';', usecols=['Vorname', 'Nachname', 'Befreit'])
+    csvreader = csv.DictReader(csvfile, delimiter=';')
+
+    for row in csvreader:
+        filtered_row = {key: row[key] for key in columns_to_read if key in row}
+        data_list.append(filtered_row)
+
+    # delete rows with empty Vorname
+    data_list = [row for row in data_list if row.get("Vorname", "").strip()]
+
+for row in data_list:
+    row['Dienste'] = 0
+
+# Pyjama-Boys
+pyjamaboys = [
+    {"Vorname": "Christoph", "Nachname": "Hartmann", "Dienste": 0},
+    {"Vorname": "Georg", "Nachname": "Paul", "Dienste": 0},
+    {"Vorname": "Arndt", "Nachname": "Begrich", "Dienste": 0},
+    {"Vorname": "Tobias", "Nachname": "Gebauer", "Dienste": 0},
+    {"Vorname": "Joseph", "Nachname": "Sonntag", "Dienste": 0}
+]
+
+dienste_WE = {
     "Freitag Abendessen": 4,
     "Samstag Wecken": 1,
     "Samstag Frühstück": 4,
     "Samstag Mittagessen": 4,
     "Samstag Kaffee": 1,
     "Samstag Abendessen": 4,
-    "Sonntag Wecken (Pyjama-Boys)": 5,  # Annahme: 1 Person, ggf. anpassen
+    "Sonntag Wecken(Pyjama-Boys)": 5,
     "Sonntag Frühstück": 4,
     "Sonntag Mittagessen": 4
-    }
-    session['dienste_WE'] = dienste_WE
+}
 
-    aktive_Dienste = {dienst: anzahl for dienst, anzahl in dienste_WE.items()}
-
-    freitag_abenddienst(aktive_Dienste, verfuegbar, zuordnung)
-
-    pyjamaboys_dienst(dienste_WE, pyjamaboys)
-
-
-
-    for dienst, anzahl in aktive_Dienste.items():
-        ausgewaehlt = []
-        for _ in range(anzahl):
-            # Finde Personen mit minimaler Dienstanzahl
-            min_Dienste = get_min_Dienste(verfuegbar)
-            kandidaten = [p for p in verfuegbar if p["Dienste"] == min_Dienste]
-            if kandidaten:
-                person = random.choice(kandidaten)
-                ausgewaehlt.append(person)
-                person["Dienste"] += 1
-            else:
-                # Falls keine Kandidaten mehr verfügbar sind, wähle zufällig aus allen anwesenden
-                person = random.choice(anwesende)
-                ausgewaehlt.append(person)
-                person["Dienste"] += 1
-        zuordnung[dienst] = ausgewaehlt
-
-# Prozedur Sommerreise
-def Sommerreise(verfuegbar, zuordnung):
-
-    anwesende = session.get('anwesende', [])
-    dienste_SE = {
+dienste_SE = {
     "Freitag Abendessen": 4,
     "Samstag Wecken": 1,
     "Samstag Frühstück": 4,
     "Samstag Mittagessen": 4,
     "Samstag Kaffee": 1,
     "Samstag Abendessen": 4,
-    "Sonntag Wecken": 1,  # Annahme: 1 Person, ggf. anpassen
+    "Sonntag Wecken": 1,
     "Sonntag Frühstück": 4,
     "Sonntag Mittagessen": 4,
     "Montag Wecken": 1,
@@ -130,70 +138,9 @@ def Sommerreise(verfuegbar, zuordnung):
     "Samstag2 Mittagessen": 4,
     "Samstag2 Kaffee": 1,
     "Samstag2 Abendessen": 4,
-    "Sonntag Wecken (Pyjama-Boys)": 5,
+    "Sonntag2 Wecken(Pyjama-Boys)": 5,
     "Sonntag2 Frühstück": 4,
     }
-    session['dienste_SE'] = dienste_SE
-
-
-    pyjamaboys_dienst(dienste_SE, pyjamaboys)
-
-    freitag_abenddienst(aktive_Dienste, verfuegbar, zuordnung)
-    
-    # Dienste werden gleichmäßig und zufällig auf alle verfügbaren Personen verteilt,
-    # ohne Begrenzung der maximalen Dienste pro Person.
-    aktive_Dienste = {dienst: anzahl for dienst, anzahl in dienste_SE.items()}
-
-    for dienst, anzahl in aktive_Dienste.items():
-        ausgewaehlt = []
-        for _ in range(anzahl):
-            # Finde Personen mit minimaler Dienstanzahl
-            min_Dienste = get_min_Dienste(verfuegbar)
-            kandidaten = [p for p in verfuegbar if p["Dienste"] == min_Dienste]
-            if kandidaten:
-                person = random.choice(kandidaten)
-                ausgewaehlt.append(person)
-                person["Dienste"] += 1
-            else:
-                # Falls keine Kandidaten mehr verfügbar sind, wähle zufällig aus allen anwesenden
-                person = random.choice(anwesende)
-                ausgewaehlt.append(person)
-                person["Dienste"] += 1
-        zuordnung[dienst] = ausgewaehlt
-
-# Einlesen der Adressliste
-base_path = os.path.dirname(os.path.abspath(__file__))
-os.chdir(base_path)
-filename = "Task_Adressliste.csv"
-fields = []
-rows = []
-data_list = []
-columns_to_read = ['Vorname', 'Nachname', 'Befreit']
-# Hier könnte die zufällige Zuteilung der dienste erfolgen
-zuordnung = {}
-
-with open(filename, 'r', encoding='utf-8') as csvfile:
-    #csvreader = pd.read_csv(csvfile, delimiter=';', usecols=['Vorname', 'Nachname', 'Befreit'])
-    csvreader = csv.DictReader(csvfile, delimiter=';')
-
-    for row in csvreader:
-        filtered_row = {key: row[key] for key in columns_to_read if key in row}
-        data_list.append(filtered_row)
-
-    # delete rows with empty Vorname
-    data_list = [row for row in data_list if row.get("Vorname", "").strip()]
-
-for row in data_list:
-    row['Dienste'] = 0
-
-# Pyjama-Boys
-pyjamaboys = [
-    {"Vorname": "Christoph"},
-    {"Vorname": "Georg"},
-    {"Vorname": "Arndt"},
-    {"Vorname": "Tobias"},
-    {"Vorname": "Joseph"}
-]
 
 ## Flask App Setup ##
 app = Flask(__name__, template_folder='website')
@@ -209,15 +156,16 @@ def index():
 @app.route('/submitfehlend', methods=['POST'])
 def submitfehlend():
     # IDs der fehlenden Peronen (Checkboxen)
-    missing_ids = request.form.getlist('person_ids')
-    missing_ids = list(map(int, missing_ids))       # to int
+    not_present_list = request.form.getlist('person_vornamen')
 
     # anwesende = alle, deren Index nicht missing_ids ist
-    anwesende = [person for idx, person in enumerate(data_list) if idx not in missing_ids]
-
+    anwesende = [
+        d for d in data_list
+        if (d.get("Befreit", "").strip().lower() != "ja")
+        and (d.get("Vorname", "").strip() or d.get("Nachname", "").strip())
+        and (d.get("Vorname", "").strip() not in not_present_list)
+    ]
     session['anwesende'] = anwesende  # Store in session for later use
-
-    print("Anwesende Personen:", anwesende)
 
     return render_template("freitagdienst.html", anwesende=anwesende)
 
@@ -230,8 +178,7 @@ def submitabenddienst():
     abenddienst_ids = list(map(int, abenddienst_ids))  # to int
 
     # anwesende = alle, deren Index nicht abenddienst_ids ist
-    freitag_abenddienst_list = [person for idx, person in enumerate(anwesende) if idx not in abenddienst_ids]
-
+    freitag_abenddienst_list = [person for idx, person in enumerate(anwesende) if idx in abenddienst_ids]
     session['freitag_abenddienst_list'] = freitag_abenddienst_list  # Store in session for later use
 
     # Return JSON for AJAX to trigger popup, but don't redirect
@@ -242,13 +189,102 @@ def submitwochensommer():
     wochensommer_choice = request.form['wochensommer_choice']
 
     if wochensommer_choice == "Wochenende":
-        return render_template("wochenende.html", dienste_WE=session.get('dienste_WE', {}))
+        return render_template("wochenende.html", dienste_WE=dienste_WE)
     elif wochensommer_choice == "Sommerreise": 
-        return render_template("sommerreise.html", dienste_SE=session.get('dienste_SE', {}))
+        return render_template("sommerreise.html", dienste_SE=dienste_SE)
 
 @app.route('/submitdienste_WE', methods=['POST'])
 def submitdienste_WE():
-   
+    anwesende = session.get('anwesende', [])
+    freitag_abenddienst_list = [
+        person.get("Vorname", "")
+        for person in session.get('freitag_abenddienst_list', [])
+        if isinstance(person, dict)
+    ]
+
+    # Get unchecked dienst names (those that are unchecked)
+    checked_dienste = request.form.getlist('dienst_WE_names')
+    dienste_updated = {dienst: anzahl for dienst, anzahl in dienste_WE.items() if dienst not in checked_dienste}
+
+
+    pyjamaboys_dienst_WE(dienste_updated, pyjamaboys, anwesende)
+    
+    freitag_abenddienst(dienste_updated, anwesende, zuordnung, freitag_abenddienst_list)
+
+    for dienst, anzahl in dienste_updated.items():
+        ausgewaehlt = []
+        for _ in range(anzahl):
+            # Finde Personen mit minimaler Dienstanzahl
+            min_Dienste = get_min_Dienste(anwesende)
+            kandidaten = [p for p in anwesende if p["Dienste"] == min_Dienste]
+            if kandidaten:
+                person = random.choice(kandidaten)
+                ausgewaehlt.append(person)
+                person["Dienste"] += 1
+            else:
+                # Falls keine Kandidaten mehr verfügbar sind, wähle zufällig aus allen anwesenden
+                person = random.choice(anwesende)
+                ausgewaehlt.append(person)
+                person["Dienste"] += 1
+        zuordnung[dienst] = ausgewaehlt
+
+    # Redirect or render next step
+    return render_template("final_dienste.html", dienste_updated=session.get('dienste_updated', {}), zuordnung=zuordnung, data_list=data_list, anwesende=session.get('anwesende', []))
+
+
+
+@app.route('/submitdienste_SE', methods=['POST'])
+def submitdienste_SE():
+    anwesende = session.get('anwesende', [])
+    freitag_abenddienst_list = [
+        person.get("Vorname", "")
+        for person in session.get('freitag_abenddienst_list', [])
+        if isinstance(person, dict)
+    ]
+
+    # Get unchecked dienst names (those that are unchecked)
+    checked_dienste = request.form.getlist('dienst_SE_names')
+    dienste_updated = {dienst: anzahl for dienst, anzahl in dienste_SE.items() if dienst not in checked_dienste}
+
+
+    pyjamaboys_dienst_SE(dienste_updated, pyjamaboys, anwesende)
+    
+    freitag_abenddienst(dienste_updated, anwesende, zuordnung, freitag_abenddienst_list)
+
+    for dienst, anzahl in dienste_updated.items():
+        ausgewaehlt = []
+        for _ in range(anzahl):
+            # Finde Personen mit minimaler Dienstanzahl
+            min_Dienste = get_min_Dienste(anwesende)
+            kandidaten = [p for p in anwesende if p["Dienste"] == min_Dienste]
+            if kandidaten:
+                person = random.choice(kandidaten)
+                ausgewaehlt.append(person)
+                person["Dienste"] += 1
+            else:
+                # Falls keine Kandidaten mehr verfügbar sind, wähle zufällig aus allen anwesenden
+                person = random.choice(anwesende)
+                ausgewaehlt.append(person)
+                person["Dienste"] += 1
+        zuordnung[dienst] = ausgewaehlt
+
+    # Redirect or render next step
+    return render_template("final_dienste.html", dienste_updated=session.get('dienste_updated', {}), zuordnung=zuordnung, data_list=data_list, anwesende=session.get('anwesende', []))
+
+
+
+
+@app.route('/final_dienste', methods=['POST'])
+def final_dienste():
+    zuordnung = session.get('zuordnung', {})
+
+    # Prepare data for rendering in final_dienste.html
+    dienst_zuordnung_list = []
+    for dienst, personen in zuordnung.items():
+        personen_namen = ", ".join(f"{p.get('Vorname', '')} {p.get('Nachname', '')}" for p in personen)
+        dienst_zuordnung_list.append({"dienst": dienst, "personen": personen_namen})
+    
+    return render_template("final_dienste.html", zuordnung=zuordnung, data_list=data_list, dienst_zuordnung_list=dienst_zuordnung_list)
 
 if __name__ == "__main__":
     app.run(debug=True)

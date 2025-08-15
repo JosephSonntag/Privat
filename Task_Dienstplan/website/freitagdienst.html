@@ -18,7 +18,7 @@
                 {% for person in anwesende %}
                     <label>
                         <input type="checkbox" name="person_ids_2" value="{{ loop.index0 }}">
-                        {{ person.Vorname }}
+                        {{ person.Vorname }} {{ person.Nachname }}
                     </label><br>
                 {% endfor %}
                 <button type="submit">Abschicken</button>

@@ -13,14 +13,14 @@ Verein;Stimme;Vorname;Nachname;Geburtsdatum;wohnhaft in;Ort;Bundesland;Telefon;M
 ;;;;;;;;;;;;;;
 12;Alt;Sabine;Bruder;28.01.1959;Chemnitzer Str. 6 d;09217 Burgst�dt;Sachsen;03724 / 854 445;0162 / 258 12 72;thosabruder@aol.com;;037 24 / 857 263;Stimmf�hrerin;
 13;Alt;Dorothee;Paul;11.01.1988;Johann Meyer Str. 2c;01097 Dresden;Sachsen;;0176 / 801 845 95;dorothee.paul@posteo.de;;;;
-14;Alt;Iris;B�rger;02.07.1968;Effengrube 16;23552 L�beck;Scheswig-Holstein;0451 / 121 48 26;01590 / 2364818;irisbuerger@web.de;;;Stimmf�hrer-Stellvertreterin;
+14;Alt;Iris;Bürger;02.07.1968;Effengrube 16;23552 L�beck;Scheswig-Holstein;0451 / 121 48 26;01590 / 2364818;irisbuerger@web.de;;;Stimmf�hrer-Stellvertreterin;
 15;Alt;Franziska;Herrmann;31.07.1973;Prie�nitzstra�e 34a;01099 Dresden;Sachsen;0351 / 811 36 03;0176 / 966 114 99;frenze.herrmann@yahoo.de;;;;
 16;Alt;Maria;Lobeck;08.11.1975;Montessoristra�e 13;04416 Markkleeberg;Sachsen;0341 / 253 59 24;0178 / 898 91 10;marialobeck@web.de;;;Vorstand;
 17;Alt;Martin;Paul;25.06.1979;Dorotheenplatz 2;04109 Leipzig;Sachsen;;0177 / 434 28 00;martinpaul@posteo.de;;;Verkehrsbeauftragter & Tontechniker & Instagram;
 18;Alt;Johanna;Wiegand;30.08.1980;Albert-Einstein-Str. 25;14473 Potsdam;Brandenburg;;0162 / 275 44 10;johanna.wiegand@gmail.com;;;Adressliste, Teilnahmeliste;
 19;Alt;Friederike;Zeiner;10.07.1977;Seeburgstra�e 57;04103 Leipzig;Sachsen;;0176/21 44 41 62;zeineralt@web.de;;;;
 20;Alt;Franziska;Prokein;;Feuerbachstrasse 9;06114 Halle;Sachsen-Anhalt;0178 196777;;f.prokein@arcor.de;;;Probejahr ;
-21;Alt;Marion;R�ber;;Dr. Nolensstraat 19;7522AX Enschede/NL;Niederlande;;;m.rber@icloud.com;;;;
+21;Alt;Marion;Röber;;Dr. Nolensstraat 19;7522AX Enschede/NL;Niederlande;;;m.rber@icloud.com;;;;
 ;;;;;;;;;;;;;;
 22;Tenor;Dirk;Eisold;28.01.1974;Falkensteinplatz 1;01309 Dresden;Sachsen;;0160 / 7563590;dirk.eisold@gmx.de;;;;
 23;Tenor;Christoph;Hartmann;28.05.1987;Schachtstrasse 15;01705 Freital;Sachsen;;0176 / 966 553 52;chr.hartmann87@gmx.de;;;Stimmf�hrer-Stellvertreter ;ja
@@ -36,12 +36,12 @@ Verein;Stimme;Vorname;Nachname;Geburtsdatum;wohnhaft in;Ort;Bundesland;Telefon;M
 32;Bass;Raphael;Hering;08.07.1987;B�hmische Str. 38;01099 Dresden;Sachsen;;0178 / 235 93 87;vivasoft@web.de;;;Stimmf�hrer-Stellvertreter ;
 33;Bass;Olaf;Konopik;12.08.1973;Heinrich-Zille-Str. 25 ;06114 Halle;Sachsen-Anhalt;;0176/30113003;olaf.konopik@gmx.de;;;;
 34;Bass;Raphael;Michaelis;27.11.1977;Eythraer Str. 26;04229 Leipzig;Sachsen;;0173 / 561 42 31;raphael.michaelis@freenet.de;;;;ja
-35;Bass;Andreas;M�ller;26.09.1955;Hoyerstr. 13;04229 Leipzig;Sachsen;0341 / 479 05 14;01575/9084292;relleum.saerdna@web.de;;;;
+35;Bass;Andreas;Müller;26.09.1955;Hoyerstr. 13;04229 Leipzig;Sachsen;0341 / 479 05 14;01575/9084292;relleum.saerdna@web.de;;;;
 36;Bass;Joseph;Sonntag;26.11.1999;Teubnerstr. 6;04317 Leipzig;Sachsen ;;0159 06814020;jokacello@gmail.com;;;Stimmf�hrer;
-37;Bass;Tim;St�pel;28.03.2005;Nonnenstr 50;04229 Leipzig;Sachsen;;0177 3249272;stoepeltim05@gmail.com;;;;
+37;Bass;Tim;Stöpel;28.03.2005;Nonnenstr 50;04229 Leipzig;Sachsen;;0177 3249272;stoepeltim05@gmail.com;;;;
 ;Bass;Albrecht;Wiegand;13.02.2005;Rigaer Str. 79;10247 Berlin;Berlin;;;albrecht.wiegand@gmail.com;;;;
 ;;;;;;;;;;;;;;
-;Dirigent;J�rg;Genslein;03.11.1978;Heinrich-Roller-Str. 13;10405 Berlin;Berlin;030/49966071;0177 / 878 90 96;jorge221@me.com;;;;ja
+;Dirigent;Jörg;Genslein;03.11.1978;Heinrich-Roller-Str. 13;10405 Berlin;Berlin;030/49966071;0177 / 878 90 96;jorge221@me.com;;;;ja
 ;Tenor;Markus;Klose;;Martin-Luther-Stra�e 10;01099 Dresden;;0351 / 65306287;0151 / 24226283;marklose@gmx.de;;;Aushilfe;ja
 ;Alt;Siegrid;Folprecht;19.09.1978;Altenberger Str. 23;01277 Dresden;;;0160 / 91710531;siegrid199@outlook.de;;;Aushilfe;ja
-;K�chin;Verena;R�th;;;Bamberg;;;;ve.raeth@gmail.com;;;;ja
+;K�chin;Verena;Räth;;;Bamberg;;;;ve.raeth@gmail.com;;;;ja

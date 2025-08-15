@@ -17,8 +17,8 @@
             <form method="post" action="/submitfehlend">
                 {% for person in data_list %}
                     <label>
-                        <input type="checkbox" name="person_ids" value="{{ loop.index0 }}">
-                        {{ person.Vorname }}
+                        <input type="checkbox" name="person_vornamen" value="{{ person.Vorname }}">
+                        {{ person.Vorname }} {{ person.Nachname }}
                     </label><br>
                 {% endfor %}
                 <button type="submit">Abschicken</button>

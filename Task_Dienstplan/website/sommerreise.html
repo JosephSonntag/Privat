@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dienstplan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Task Dienstplan - Sommerreise</h1>
+    </header>
+    <main>
+        <section id="Dienste">
+            <h2>Entfallende Dienste</h2>
+            <p>Bitte auswählen, welche Dienste entfallen (angekreuzte Dienste entfallen):</p>
+            <form method="post" action="/submitdienste_SE">
+                {% for dienst in dienste_SE %}
+                    <label>
+                        <input type="checkbox" name="dienst_SE_names" value="{{ dienst }}">
+                        {{ dienst }}
+                    </label><br>
+                {% endfor %}
+                <button type="submit">Abschicken</button>
+            </form>
+    </main>
+    <footer>
+        <p>&copy; 2025 Task Dienstplan</p>
+    </footer>
+</html>

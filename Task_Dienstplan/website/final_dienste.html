@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dienstplan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Dienstzuordnung:</h1>
+    </header>
+    <main>
+        <section id="Dienste">
+            <section id="dienstzuweisung">
+                <h2>Folgende zufällige Dienstzuweisung wurde erstellt:</h2>
+                <form method="post" action="/final_dienste" id="dienstzuweisung-section"></form>
+                {% set dienste_by_weekday = {} %}
+                {% set weekday_order = ['Freitag', 'Samstag', 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag2', 'Samstag2', 'Sonntag2'] %}
+                {% for dienst, personen in zuordnung.items() %}
+                    {% set weekday = dienst.split(' ')[0] %}
+                    {% if weekday in dienste_by_weekday %}
+                        {% set _ = dienste_by_weekday[weekday].append((dienst, personen)) %}
+                    {% else %}
+                        {% set _ = dienste_by_weekday.update({weekday: [(dienst, personen)]}) %}
+                    {% endif %}
+                {% endfor %}
+
+                {% for weekday in weekday_order %}
+                    {% if weekday in dienste_by_weekday %}
+                        <h3>{{ weekday }}</h3>
+                        {% for dienst, personen in dienste_by_weekday[weekday] %}
+                            <label>
+                                <span style="font-size:1.2em; font-weight:bold;">
+                                    {{ dienst.split(' ')[1] }}
+                                </span>
+                                : 
+                                {% for person in personen %}
+                                    {{ person.Vorname }} {{ person.Nachname }}{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </label><br>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+                </form>
+                <button type="button" onclick="printDienstzuweisung()">Diesen Abschnitt drucken</button>
+                <script>
+                    function printDienstzuweisung() {
+                        var section = document.getElementById('dienstzuweisung');
+                        var printWindow = window.open('', '', 'height=600,width=800');
+                        printWindow.document.write('<html><head><title>Dienstzuweisung Drucken</title>');
+                        printWindow.document.write('<link rel="stylesheet" href="styles.css">');
+                        printWindow.document.write('</head><body >');
+                        printWindow.document.write(section.innerHTML);
+                        printWindow.document.write('</body></html>');
+                        printWindow.document.close();
+                        printWindow.focus();
+                        printWindow.print();
+                    }
+                </script>
+            </section>
+
+            <h2>Anwesende und Anzahl ihrer Dienste:</h2>
+            <ul>
+            {% set dienst_count = {} %}
+            {% set anwesende = {} %}
+            {% for dienst, personen in zuordnung.items() %}
+                {% for person in personen %}
+                    {% set key = person.Vorname ~ ' ' ~ person.Nachname %}
+                    {% if key in dienst_count %}
+                        {% set _ = dienst_count.update({key: dienst_count[key] + 1}) %}
+                    {% else %}
+                        {% set _ = dienst_count.update({key: 1}) %}
+                        {% set _ = anwesende.update({key: true}) %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            {% for name, count in dienst_count.items() %}
+                <li>{{ name }}: {{ count }}</li>
+            {% endfor %}
+            </ul>
+            </form>
+    </main>
+    <footer>
+        <p>&copy; 2025 Task Dienstplan</p>
+    </footer>
+</html>
