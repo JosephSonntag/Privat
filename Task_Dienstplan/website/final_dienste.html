@@ -9,6 +9,7 @@
 <body>
     <header>
         <h1>Dienstzuordnung:</h1>
+        <img id="logo" alt="freeCodeCamp" src="images/TASK_logo.png">
     </header>
     <main>
         <section id="Dienste">
@@ -43,22 +44,22 @@
                     {% endif %}
                 {% endfor %}
                 </form>
-                <button type="button" onclick="printDienstzuweisung()">Diesen Abschnitt drucken</button>
-                <script>
-                    function printDienstzuweisung() {
-                        var section = document.getElementById('dienstzuweisung');
-                        var printWindow = window.open('', '', 'height=600,width=800');
-                        printWindow.document.write('<html><head><title>Dienstzuweisung Drucken</title>');
-                        printWindow.document.write('<link rel="stylesheet" href="styles.css">');
-                        printWindow.document.write('</head><body >');
-                        printWindow.document.write(section.innerHTML);
-                        printWindow.document.write('</body></html>');
-                        printWindow.document.close();
-                        printWindow.focus();
-                        printWindow.print();
-                    }
-                </script>
             </section>
+            <button type="button" onclick="printDienstzuweisung()">Diesen Abschnitt drucken</button>
+            <script>
+                function printDienstzuweisung() {
+                    var section = document.getElementById('dienstzuweisung');
+                    var printWindow = window.open('', '', 'height=600,width=800');
+                    printWindow.document.write('<html><head><title>Dienstzuweisung Drucken</title>');
+                    printWindow.document.write('<link rel="stylesheet" href="styles.css">');
+                    printWindow.document.write('</head><body >');
+                    printWindow.document.write(section.innerHTML);
+                    printWindow.document.write('</body></html>');
+                    printWindow.document.close();
+                    printWindow.focus();
+                    printWindow.print();
+                }
+            </script>
 
             <h2>Anwesende und Anzahl ihrer Dienste:</h2>
             <ul>

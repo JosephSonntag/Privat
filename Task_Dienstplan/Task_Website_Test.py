@@ -1,7 +1,9 @@
 import os
 import csv
 import random
-from flask import Flask, render_template, request, session, jsonify
+from flask import Flask, render_template, request, session
+import webbrowser
+import threading
 
 ## Prozeduren ##
 
@@ -286,5 +288,10 @@ def final_dienste():
     
     return render_template("final_dienste.html", zuordnung=zuordnung, data_list=data_list, dienst_zuordnung_list=dienst_zuordnung_list)
 
+def open_browser():
+    webbrowser.open_new("http://127.0.0.1:5000/")  # or your host/port if different
+
 if __name__ == "__main__":
+    if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+        threading.Timer(1.0, open_browser).start()
     app.run(debug=True)
